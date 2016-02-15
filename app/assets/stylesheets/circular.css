@@ -1,0 +1,19 @@
+.circular {
+        border: 1px solid white;
+        border-radius: 45px;
+        box-shadow: 1px 1px 1px rgba(0,0,0, 0.7);
+        display: block;
+        height: 90px;
+        width: 90px;
+	    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+
+}
+
+.circular img {
+        border: 5px solid rgba(0, 0, 0, 0.2);
+        border-radius: 45px; /* must be width + border */
+        width: 90px;
+        height: 90px;
+}
+
