@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160212082824) do
+ActiveRecord::Schema.define(version: 20160216064024) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -19,7 +19,10 @@ ActiveRecord::Schema.define(version: 20160212082824) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
 
   create_table "comments", force: true do |t|
     t.string   "article_id"
@@ -39,6 +42,9 @@ ActiveRecord::Schema.define(version: 20160212082824) do
     t.string   "password_salt"
     t.string   "activation_token"
     t.string   "activation_status"
+    t.boolean  "admin",             default: false
   end
+
+  add_foreign_key "articles", "users", name: "articles_user_id_fk"
 
 end

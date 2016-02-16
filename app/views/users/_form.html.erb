@@ -16,10 +16,7 @@
 		<%= f.label :password_confirmation, "Confirmation" %>
 		<%= f.password_field :password_confirmation, class: 'form-control' %>
 
-		<%= f.label :humanizer_answer, @user.humanizer_question %>
-		<%= f.text_field :humanizer_answer %>
-		<%= f.hidden_field :humanizer_question_id, class: 'form-control' %>
-
+		
 		<%= f.submit "Create my account", class: "btn btn-primary" %>
 		<% end %>
 	</div>

@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :articles, dependent: :destroy
   attr_accessor :password
   before_save :add_salt_and_hash
   validates :username, presence: true, uniqueness: true
@@ -12,8 +13,8 @@ class User < ActiveRecord::Base
       self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
     end
   end
-  include Humanizer
-  require_human_on :create
+  # include Humanizer
+  # require_human_on :create
 
   before_create :add_activation_token
 
