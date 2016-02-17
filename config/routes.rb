@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
  
   
+  get 'static_pages/home'
+
+  get 'static_pages/about'
+
+  get 'static_pages/contact'
+
   get "sign_up" => "users#new", :as => "sign_up"
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
@@ -9,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :comments
 
-  root :to => "articles#home"
+  root :to => "static_pages#home"
   
   get 'articles/profile'
 

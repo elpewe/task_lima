@@ -1,0 +1,20 @@
+<%= form_for(@article) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+  	<%= f.text_field :title, placeholder: "Title..." %>
+    <%= f.text_area :content, placeholder: "Compose new article..." %>
+    <div>
+			<table>
+				<tr>
+					<%= f.label :status %> 
+					<td><%= f.radio_button :status, "active" %>
+					<%= label :article_status, 'active' %></td>
+					<td><%= f.radio_button :status, "off", :checked => true %>
+					<%= label :article_status, 'off' %></td>
+				</tr>
+			</table>
+		</div>
+  </div>
+  
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>

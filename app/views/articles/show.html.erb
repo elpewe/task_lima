@@ -1,3 +1,5 @@
+<%=csrf_meta_tag%>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -17,4 +19,5 @@
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %> |
+<%= link_to 'delete', article_path(@article.id), method: "DELETE", data: {confirm: 'Delete this data ? '} %>
 

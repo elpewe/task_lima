@@ -12,6 +12,8 @@
 //
 
 
-//= require jquery-2.1.1.js
+
+//=require jquery
+//=require jquery_ujs
 //= require bootstrap
 //= require_tree .

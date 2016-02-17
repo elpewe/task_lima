@@ -22,4 +22,7 @@ class User < ActiveRecord::Base
     self.activation_token = SecureRandom.urlsafe_base64
     self.activation_status = "not activated"
   end
+  def feed
+    Article.all
+  end
 end

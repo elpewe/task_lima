@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
       session[:user] = user.id
       flash[:notice] = "Wellcome #{user.username}"
       log_in user
-      redirect_to user
+      redirect_to root_path
     else
       params[:username]
       flash.now[:danger] = "Username n Password not match"
