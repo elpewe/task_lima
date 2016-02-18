@@ -10,7 +10,10 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1
   # GET /articles/1.json
-  def show  
+  def show
+    @article = Article.find_by_id(params[:id])
+    @comments = @article.comments.order("id desc")
+    @comment = Comment.new  
   end
 
   # GET /articles/new
@@ -28,10 +31,13 @@ class ArticlesController < ApplicationController
     @article = current_user.articles.build(article_params)
     if @article.save
       flash[:success] = "Article created!"
-      redirect_to root_url
+      respond_to do |format|
+          format.html { redirect_to root_url }
+          format.js
+      end
     else
-     
-      render 'static_pages/home'
+     @feed_items = []
+     render 'static_pages/home'
     end
   end
 

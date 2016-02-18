@@ -1,0 +1,7 @@
+<% if @comment.errors.present? %>
+	$("#form-comment").html(" <%= j( render 'articles/form_comment' ) %>");
+<% else %>
+	$("#list-comments").html(" <%= j( render 'articles/comments' ) %>");
+	$("#comment_content").val('');
+	$("div.field_with_errors p.message").remove();
+<% end %>

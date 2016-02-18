@@ -1,42 +1,27 @@
-<h1>Listing articles</h1>
+<% if logged_in? %>
+<div class="row">
+	<aside class="col-md-4">
+		<section class="user_info">
+			<%= render 'shared/user_info' %>
+		</section>
+		<section class="articles_form">
+			<%= render 'shared/article_form' %>
+		</section>
+	</aside>
+	<div class="col-md-8">
+      <h3>Articles Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+</div>
 
-<% @articles.each do |article| %>
-<h3><%= article.title %></h3>
-<p>
-	<%= article.content.truncate(50) %>
-	<%= link_to 'read more', article_path(article.id) %>
-</p>
-<h4>Status : <%= article.status %></h4>
-<hr/>
-<p>
-	<span><%= link_to 'edit', edit_article_path(article.id) %><span> <span> | </span> <span><%= link_to 'delete', article_path(article.id), method: "DELETE", data: {confirm: 'Delete this data ? '} %><span>
-</p>
+<% else %>
+
+<div class="center jumbotron">
+	<h1>Welcome to the Sample App</h1>
+
+	<h2> Signed up to post new article </h2>
+
+	<%= link_to "Sign up now!", sign_up_path, class: "btn btn-lg btn-primary" %>
+</div>
 
 <% end %>
-<!-- <table>
-<thead>
-<tr>
-<th>Title</th>
-<th>Content</th>
-<th>Status</th>
-<th colspan="3"></th>
-</tr>
-</thead>
-
-<tbody>
-<% @articles.each do |article| %>
-<tr>
-<td><%= article.title %></td>
-<td><%= article.content.truncate(40) %></td>
-<td><%= article.status %></td>
-<td><%= link_to 'Show', article %></td>
-<td><%= link_to 'Edit', edit_article_path(article) %></td>
-<td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-</tr>
-<% end %>
-</tbody>
-</table> -->
-
-<br>
-
-<%= link_to 'New Article', new_article_path %>

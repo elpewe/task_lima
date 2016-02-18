@@ -24,5 +24,6 @@ class User < ActiveRecord::Base
   end
   def feed
     Article.all
+    # Article.where("user_id = ?", id)
   end
 end

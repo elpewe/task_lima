@@ -1,6 +1,6 @@
 <%=csrf_meta_tag%>
 
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
 <p>
   <strong>Title:</strong>
@@ -18,6 +18,16 @@
 </p>
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %> |
+<%= link_to 'Back', static_pages_home_path %> |
 <%= link_to 'delete', article_path(@article.id), method: "DELETE", data: {confirm: 'Delete this data ? '} %>
 
+
+<div id="form-comment">
+        <%= render 'form_comment' %>
+    </div>
+
+    <h4>Here the comments</h4>
+
+    <div id="list-comments">
+        <%= render 'comments' %>
+    </div>
