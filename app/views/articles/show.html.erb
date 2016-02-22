@@ -1,33 +1,41 @@
-<%=csrf_meta_tag%>
+<%= csrf_meta_tag%>
 
 <!-- <p id="notice"><%= notice %></p> -->
 
 <p>
-  <strong>Title:</strong>
-  <%= @article.title %>
+	<strong>Title:</strong>
+	<%= @article.title %>
 </p>
 
 <p>
-  <strong>Content:</strong>
-  <%= @article.content %>
+	<strong>Content:</strong>
+	<%= @article.content %>
 </p>
 
 <p>
-  <strong>Status:</strong>
-  <%= @article.status %>
+	<strong>Status:</strong>
+	<%= @article.status %>
 </p>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', static_pages_home_path %> |
-<%= link_to 'delete', article_path(@article.id), method: "DELETE", data: {confirm: 'Delete this data ? '} %>
+<%= link_to 'Back', static_pages_home_path %> 
+<% if current_user?(@article.user) %>
+	|<%= link_to 'Edit', edit_article_path(@article.id) %> |
+	<%= link_to 'delete', article_path(@article.id), method: "DELETE", data: {confirm: 'Delete this data ? '} %>
+<%end%>
 
+<p>
+	Download:
+	<!-- <%= link_to "CSV", article_export_path(format: "csv") %> | -->
+	<%= link_to 'Excel', @as_article ? article_download_file_path + '?article=' + @article.id.to_s : article_download_file_path,
+	:class => 'btn btn-primary', data: { no_turbolink: true } %>
+</p>
 
 <div id="form-comment">
-        <%= render 'form_comment' %>
-    </div>
+	<%= render 'form_comment' %>
+</div>
 
-    <h4>Here the comments</h4>
+<h4>Here the comments</h4>
 
-    <div id="list-comments">
-        <%= render 'comments' %>
-    </div>
+<div id="list-comments">
+	<%= render 'comments' %>
+</div>

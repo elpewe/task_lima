@@ -4,9 +4,22 @@
 		<section class="user_info">
 			<%= render 'shared/user_info' %>
 		</section>
+		<section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
 		<section class="articles_form">
 			<%= render 'shared/article_form' %>
 		</section>
+		<section>
+			<%= form_tag  import_articles_path, :multipart => true do %>
+  <div class="form-group">
+    <p>Please select the xls or csv file from your computer to be imported</p>
+    <%= file_field_tag :file %>
+  </div>
+  <div class="form-group">
+    <%= submit_tag 'Import Data', :class => 'btn btn-primary' %>
+  </div>
+<% end %></section>
 	</aside>
 	<div class="col-md-8">
       <h3>Articles Feed</h3>

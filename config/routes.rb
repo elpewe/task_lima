@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get "sign_up" => "users#new", :as => "sign_up"
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
-  get 'logout'  => 'sessions#destroy'
+  get 'logout'  => 'sessions#logout'
   resources :users
 
   resources :comments
@@ -23,7 +23,18 @@ Rails.application.routes.draw do
   
   resources :articles
   resources :sessions
-
+  get 'export/:id', to: 'articles#export', as: :article_export
+  get 'download_file/:id', to: 'articles#download_file', as: :article_download_file 
+  resources :articles do
+    collection { post :import }
+  end
+  
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :relationships,       only: [:create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

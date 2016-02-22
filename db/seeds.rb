@@ -25,11 +25,17 @@
                # created_at: Time.zone.now)
 # end
 
-users = User.order(:created_at).take(6)
-20.times do
-  content = Faker::Lorem.sentence(5)
-  title = "title"
-  status= "active"
-  users.each { |user| user.articles.create!(content: content,
-    title: title, status: status) }
-end
+# users = User.order(:created_at).take(6)
+# 20.times do
+  # content = Faker::Lorem.sentence(5)
+  # title = "title"
+  # status= "active"
+  # users.each { |user| user.articles.create!(content: content,
+    # title: title, status: status) }
+# end
+users = User.all
+user  = users.first
+following = users[2..50]
+followers = users[3..40]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }

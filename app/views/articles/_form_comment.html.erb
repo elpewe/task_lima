@@ -5,7 +5,7 @@
             <%= f.hidden_field :user_id, value: current_user.id %>
             <% end %>
   <div class="field">
-    <%= f.text_area :content, placeholder: "Compose new micropost..." %>
+    <%= f.text_area :content, placeholder: "Comment Here..." %>
   </div>
   <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>

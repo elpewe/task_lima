@@ -17,7 +17,7 @@
 					<%= link_to "Home", root_path %>
 				</li>
 				<li>
-					<%= link_to "profile",    articles_profile_path %>
+					<%= link_to "Profile",    current_user %>
 				</li>
 				
 				<li>
@@ -37,7 +37,7 @@
 						</li>
 						<li class="divider"></li>
 						<li>
-							<%= link_to "Log out", logout_path, method: "delete" %>
+							<%= link_to "Log out", logout_path %>
 						</li>
 
 					</ul>

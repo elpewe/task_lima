@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'bcrypt-ruby', require: 'bcrypt'
 #gem 'humanizer'
+gem 'protected_attributes'
 gem 'kaminari'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
@@ -34,6 +35,14 @@ gem 'axlsx'
 gem 'faker'
 gem 'populator'
 gem "foreigner"
+gem "axlsx_rails"
+gem 'roo'
+# gem 'iconv', '~> 1.0.3'
+# gem 'roo-xls'
+gem 'zip'
+gem 'rack-cors', :require => 'rack/cors'
+gem 'rubyXL'
+gem 'rubyzip'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

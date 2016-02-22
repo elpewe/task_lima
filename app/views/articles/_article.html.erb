@@ -2,15 +2,12 @@
 	<%= link_to gravatar_for(article.user), article.user %>
 	<span class="user"><%= link_to article.user.username, article.user %></span>
 	<span class="title"><%= article.title %></span>
-	<span class="content"><%= article.content.truncate(60) %> <%= link_to 'read more', article_path(article.id) %></span>
+	<span class="content"><%= article.content.truncate(150) %> <%= link_to 'read more', article_path(article.id) %></span>
 	<span class="timestamp"> Posted <%= time_ago_in_words(article.created_at) %> ago.
+		
 		<% if current_user?(article.user) %>
 		<%= link_to "delete", article, method: :delete,
 		data: { confirm: "You sure?" } %>
 		<%= link_to 'edit', edit_article_path(article.id) %>
-		
-		
-
 		<% end %> </span>
-
 </li>

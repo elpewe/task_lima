@@ -10,4 +10,29 @@ class Article < ActiveRecord::Base
 
   scope :status_active, -> {where(status: 'active')}
   has_many :comments, dependent: :destroy
+  
+  
+  def self.to_csv(id, options = {})
+    CSV.generate(options) do |csv|
+      csv.add_row column_names
+      values = find(id).attributes.values
+      csv.add_row values
+      find(id).comments.each do |comment|
+        valc = comment.attributes.values
+        csv.add_row valc
+      end
+    end
+  end
+  
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      article_hash = row.to_hash
+      article = Article.where(id: article_hash["id"])
+      if article.count == 1
+        article.first.update_attributes(article_hash)
+      else
+        Article.create!(article_hash)
+      end
+    end
+  end
 end
